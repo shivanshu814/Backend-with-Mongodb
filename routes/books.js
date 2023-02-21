@@ -2,10 +2,11 @@
 
 const express = require('express');
 const router = express.Router();
-const Book = require('../models/books');
+const { Book, validateBook } = require('../models/books');
 
 //POST: CREATE A NEW BOOK
 router.post('/', (req, res) => {
+	validateBook(req.body);
 	book = new Book({
 		name: req.body.bookName,
 		author: {
